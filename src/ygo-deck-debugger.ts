@@ -154,7 +154,7 @@ import { render, untapped, ydk, ydke } from "./index";
 			let deckCode: string = "";
 			switch (clickedButton.dataset.ygoDeckCodeType) {
 				case "ydk": {
-					deckCode = ydk.encode(currentDeckData);
+					deckCode = ydk.encode(currentDeckData, currentDeckName);
 					downloadTextAsFile(deckCode, `${currentDeckName}.ydk`);
 					break;
 				}
@@ -164,7 +164,7 @@ import { render, untapped, ydk, ydke } from "./index";
 					break;
 				}
 				case "untapped": {
-					deckCode = untapped.encode(currentDeckData);
+					deckCode = untapped.encode(currentDeckData, currentDeckName);
 					navigator.clipboard.writeText(deckCode);
 					break;
 				}

@@ -8,7 +8,7 @@ export interface YuGiOhDeck {
 }
 
 export interface IYuGiOhDeckCodec {
-	encode(deckData: YuGiOhDeck): string;
+	encode(deckData: YuGiOhDeck, deckName?: string): string;
 	decode(deckCode: string): { data: YuGiOhDeck; name: string };
 }
 

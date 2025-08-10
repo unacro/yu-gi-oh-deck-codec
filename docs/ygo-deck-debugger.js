@@ -168,8 +168,8 @@ class UntappedCodec {
       name: deckName ?? "Untapped.gg Deck"
     };
   }
-  encode(deckData) {
-    console.error(deckData);
+  encode(deckData, deckName = "") {
+    console.error({ deckName, deckData });
     throw new Error("Method not implemented");
   }
 }
@@ -221,8 +221,9 @@ class YdkCodec {
       name: deckName.pop() ?? "YDK Deck"
     };
   }
-  encode(deckData) {
+  encode(deckData, deckName = "") {
     const lines = [
+      deckName === "" ? undefined : `# ${deckName}`,
       "#main",
       ...deckData.main,
       "#extra",
@@ -230,7 +231,7 @@ class YdkCodec {
       deckData.side ? "!side" : undefined,
       ...deckData.side ?? []
     ];
-    return lines.filter(Boolean).join(`
+    return lines.filter((line) => line && line !== "").join(`
 `);
   }
 }
@@ -434,7 +435,7 @@ var render = deckRenderer.render.bind(deckRenderer);
       let deckCode = "";
       switch (clickedButton.dataset.ygoDeckCodeType) {
         case "ydk": {
-          deckCode = ydk.encode(currentDeckData);
+          deckCode = ydk.encode(currentDeckData, currentDeckName);
           downloadTextAsFile(deckCode, `${currentDeckName}.ydk`);
           break;
         }
@@ -444,6 +445,7 @@ var render = deckRenderer.render.bind(deckRenderer);
           break;
         }
         case "untapped": {
+          deckCode = untapped.encode(currentDeckData, currentDeckName);
           navigator.clipboard.writeText(deckCode);
           break;
         }

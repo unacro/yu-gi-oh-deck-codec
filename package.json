@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "bun src/index.ts",
-		"debug": "bun build src/ygo-deck-debugger.ts --outdir docs/ygo-deck --watch"
+		"debug": "bun build src/ygo-deck-debugger.ts --outdir docs/ --watch"
 	},
 	"devDependencies": {
 		"@types/bun": "latest"

@@ -45,8 +45,9 @@ class YdkCodec implements IYuGiOhDeckCodec {
 		};
 	}
 
-	encode(deckData: YuGiOhDeck) {
+	encode(deckData: YuGiOhDeck, deckName: string = "") {
 		const lines = [
+			deckName === "" ? undefined : `# ${deckName}`,
 			"#main",
 			...deckData.main,
 			"#extra",
@@ -54,7 +55,7 @@ class YdkCodec implements IYuGiOhDeckCodec {
 			deckData.side ? "!side" : undefined,
 			...(deckData.side ?? []),
 		];
-		return lines.filter(Boolean).join("\n");
+		return lines.filter((line) => line && line !== "").join("\n");
 	}
 }
 

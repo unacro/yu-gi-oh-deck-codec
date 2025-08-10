@@ -80,8 +80,8 @@ class UntappedCodec implements IYuGiOhDeckCodec {
 		// TODO: base64 解码 untappedCode
 	}
 
-	encode(deckData: YuGiOhDeck): string {
-		console.error(deckData);
+	encode(deckData: YuGiOhDeck, deckName: string = ""): string {
+		console.error({ deckName, deckData });
 		throw new Error("Method not implemented");
 		// return "";
 	}
