@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Yu-Gi-Oh! Deck Builder</title>
+	<link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+	<div id="app">
+		<div>
+			<p>Tips：成功导入牌组后，左键跳转<ruby>
+					<rb>卡查</rb>
+					<rp>（</rp>
+					<rt><a href="https://ygocdb.com/" target="_blank" rel="noopener noreferrer">百鸽</a></rt>
+					<rp>）</rp>
+				</ruby>，右键复制 <ruby>
+					<rb>MD 卡名</rb>
+					<rp>（</rp>
+					<rt>Master Duel</rt>
+					<rp>）</rp>
+				</ruby>（如果有的话）</p>
+		</div>
+		<div data-ygo-deck-button-group>
+			<input type="button" data-ygo-deck-button="import" value="加载剪贴板的卡组码">
+			<input type="button" data-ygo-deck-button="export" data-ygo-deck-code-type="ydk" value="导出为 YDK 文件">
+			<input type="button" data-ygo-deck-button="export" data-ygo-deck-code-type="ydke" value="导出为 YDKE 格式">
+			<input type="button" data-ygo-deck-button="export" data-ygo-deck-code-type="untapped" value="导出为 Untapped.gg 格式"
+				disabled>
+		</div>
+	</div>
+	<script src="./ygo-deck-debugger.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,119 @@
+:root {
+    font-size: 16px;
+    --card-gap: .25rem;
+    --color-primary: #2980b9;
+    --color-secondary: #8e44ad;
+    --color-tertiary: #2c3e50;
+    --color-accent: #e67e22;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ruby>rt {
+    font-size: 75%;
+
+    a {
+        text-decoration: none;
+    }
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #fff;
+    width: 30vw;
+    min-height: 97vh;
+    --button-visibility: hidden;
+
+    div[data-ygo-deck-button-group] {
+        display: flex;
+        width: 100%;
+        gap: .25rem;
+        margin-bottom: 1rem;
+
+        input[type="button"][data-ygo-deck-button="import"] {
+            flex-grow: 1;
+        }
+
+        input[type="button"][data-ygo-deck-button="export"] {
+            visibility: var(--button-visibility, hidden);
+        }
+    }
+
+    div[data-ygo-deck] {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        font-family: "楷体", "Noto Sans CJK SC", "Microsoft Yahei", "PingFang SC", Arial, Helvetica, sans-serif;
+        font-weight: bold;
+
+        [data-ygo-cards-type="main"] {
+            background-color: var(--color-primary);
+        }
+
+        [data-ygo-cards-type="extra"] {
+            background-color: var(--color-secondary);
+        }
+
+        [data-ygo-cards-type="side"] {
+            background-color: var(--color-tertiary);
+        }
+
+        span[data-ygo-deck-name] {
+            font-size: 1.5rem;
+        }
+
+        span[data-ygo-cards-type] {
+            width: 100%;
+            padding: calc(var(--card-gap) * 2);
+            font-size: 1.25rem;
+            text-align: center;
+            color: #eee;
+        }
+
+        div[data-ygo-cards-type] {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: var(--card-gap);
+            height: auto;
+            width: 100%;
+            padding: calc(var(--card-gap) * 2);
+
+            div[data-ygo-card-password] {
+                width: fit-content;
+                height: fit-content;
+                cursor: pointer;
+                transition: transform 0.2s ease-in-out;
+
+                img {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    object-fit: cover;
+                    pointer-events: none;
+                }
+            }
+
+            div[data-ygo-card-password]:hover {
+                transform: scale(2.75);
+            }
+        }
+    }
+}
+
+#app[data-hover-file="true"] {
+    border: 2px dashed #ccc;
+    border-color: #09f;
+    background-color: #f0f8ff;
+}
